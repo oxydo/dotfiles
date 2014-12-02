@@ -73,7 +73,9 @@ directory_name(){
   echo "%{$fg_bold[cyan]%}%1/%{$reset_color%}"
 }
 
-export PROMPT=$'$(user_info) in $(directory_name) $(git_dirty)$(need_push)\n› '
+PROMPT='%B%F{'green'}%n@%m%k %B%F{'blue'}%1~ $(git_prompt_info) %# %b%f%k'
+export PROMPT=$'$(user_info) $(directory_name) $(git_dirty)$(need_push) %# %b%f%k'
+#export PROMPT=$'$(user_info) in $(directory_name) $(git_dirty)$(need_push)\n› '
 
 precmd() {
   title "zsh" "%m" "%55<...<%~"
