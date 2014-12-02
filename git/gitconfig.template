@@ -26,7 +26,6 @@
  	autocrlf = input
   pager = less -r
   preloadindex = true
- 	editor = subl -n -w
  	# To use Sublime for the editor:
  	# editor = subl -n -w
 	# To use MacVim for the editor:
