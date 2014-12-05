@@ -1,1 +1,1 @@
-alias flushdns="sudo killall -HUP mDNSResponder"
+alias flushdns="sudo discoveryutil udnsflushcaches"
