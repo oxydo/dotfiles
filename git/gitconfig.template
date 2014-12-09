@@ -33,11 +33,12 @@
 [credential]
 	helper = osxkeychain
 [diff]
-	tool = Kaleidoscope
+	tool = kdiff3
 [difftool]
 	prompt = false
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool "kdiff3"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+	trustExitCode = false
 [help]
 	autocorrect = 1
 [http]
@@ -45,7 +46,7 @@
 [hub]
 	protocol = https
 [merge]
-	tool = Kaleidoscope
+	tool = kdiff3
 [merge "gemfilelock"]
   name = Handle Gemfile.lock merge conflicts
   driver = bundle install
@@ -61,9 +62,9 @@
 	# 	exit 1 if b.include?(%(<)*%L)'"
 [mergetool]
 	keepBackup = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+[mergetool "kdiff3"]
+	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+	trustExitCode = false
 [pull]
 	rebase = true
 [push]
