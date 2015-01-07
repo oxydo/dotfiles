@@ -18,14 +18,14 @@
 	branch = auto
 	ui = true
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /opt/boxen/config/git/gitignore
 	attributesfile = !$DOT_FILES/git/attributes
 	trustctime = false
 	autocrlf = input
 	pager = less -r
 	preloadindex = true
 [credential]
-	helper = osxkeychain
+	helper = /opt/boxen/bin/boxen-git-credential
 [difftool "kdiff3"]
 	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 	trustExitCode = false
