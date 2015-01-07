@@ -6,14 +6,12 @@
 	st = status
 	ci = commit
 	br = branch
-  lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit"
+	lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit"
 	recent = "for-each-ref --count=15 --sort=-committerdate refs/heads/ --format='%(committerdate:short) - %(refname:short) by: %(authorname)'"
-  refresh = !bash -c "cd .; current_branch=`git name-rev --name-only head`;echo $current_branch; if [[ 'xx' != 'x${ current_branch}x' ]];then git checkout master; git pull; git checkout ${current_branch};git merge --no-ff master; fi"
-  # Check how the merge of two branches will go:
-  # 	`git dry-merge dev master` to see how merging dev into master will go
-  dry-merge = "!f() { git merge-tree `git merge-base $2 $1` $2 $1; }; f"
-[apply]
-	whitespace = nowarn
+	refresh = !bash -c "cd .; current_branch=`git name-rev --name-only head`;echo $current_branch; if [[ 'xx' != 'x${ current_branch}x' ]];then git checkout master; git pull; git checkout ${current_branch};git merge --no-ff master; fi"
+	# Check how the merge of two branches will go:
+	# 	`git dry-merge dev master` to see how merging dev into master will go
+	dry-merge = "!f() { git merge-tree `git merge-base $2 $1` $2 $1; }; f"
 [color]
 	diff = auto
 	status = auto
@@ -21,53 +19,25 @@
 	ui = true
 [core]
 	excludesfile = ~/.gitignore
- 	attributesfile = !$DOT_FILES/git/attributes
- 	trustctime = false
- 	autocrlf = input
-  pager = less -r
-  preloadindex = true
- 	# To use Sublime for the editor:
- 	# editor = subl -n -w
-	# To use MacVim for the editor:
-	# editor = 'mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
+	attributesfile = !$DOT_FILES/git/attributes
+	trustctime = false
+	autocrlf = input
+	pager = less -r
+	preloadindex = true
 [credential]
 	helper = osxkeychain
-[diff]
-	tool = kdiff3
-[difftool]
-	prompt = false
 [difftool "kdiff3"]
 	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 	trustExitCode = false
-[help]
-	autocorrect = 1
-[http]
-  postBuffer = 524288000
-[hub]
-	protocol = https
-[merge]
+[difftool]
+	prompt = false
+[diff]
 	tool = kdiff3
-[merge "gemfilelock"]
-  name = Handle Gemfile.lock merge conflicts
-  driver = bundle install
-# [merge "railsschema"]
-  # name = Pick newer Rails schema version
-  # driver = "ruby -e '\n\
-	# 	system %(git), %(merge-file), %(--marker-size=%L), %(%A), %(%O), %(%B)\n\
-	# 	b = File.read(%(%A))\n\
-	# 	b.sub!(/^<+ .*\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n=+\\nActiveRecord::Schema\\.define.:version => (\\d+). do\\n>+ .*/) do\n\
-	# 	  %(ActiveRecord::Schema.define(:version => #{[$1, $2].max}) do)\n\
-	# 	end\n\
-	# 	File.open(%(%A), %(w)) {|f| f.write(b)}\n\
-	# 	exit 1 if b.include?(%(<)*%L)'"
+[mergetool "kdiff3"]
+	path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 [mergetool]
 	keepBackup = false
-[mergetool "kdiff3"]
-	cmd = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-	trustExitCode = false
-[pull]
-	rebase = true
-[push]
-	default = simple
-[rerere]
-	enabled = true
+[merge]
+	tool = kdiff3
+[hub]
+	protocol = https
