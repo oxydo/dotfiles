@@ -41,3 +41,5 @@
 	tool = kdiff3
 [hub]
 	protocol = https
+[push]
+	default = simple
