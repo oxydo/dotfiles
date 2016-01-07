@@ -39,13 +39,11 @@ setopt complete_aliases
 
 zle -N newtab
 
-bindkey '^[^[[D' backward-word
-bindkey '^[^[[C' forward-word
-bindkey '^[[5D' beginning-of-line
-bindkey '^[[5C' end-of-line
-bindkey '^[[3~' delete-char
-bindkey '^[^N' newtab
-bindkey '^?' backward-delete-char
+bindkey '^[b' backward-word
+bindkey '^[f' forward-word
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey "^[^?" backward-kill-word
 
 autoload -U select-word-style
 select-word-style bash
